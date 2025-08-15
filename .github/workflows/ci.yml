@@ -9,21 +9,24 @@ jobs:
   build-test-deploy:
     runs-on: self-hosted
     steps:
+      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Install backend dependencies (Yarn already installed globally)
       - name: Install backend dependencies
         working-directory: ./backend
         run: |
-          npm install -g yarn
           yarn install
 
+      # Step 3: Install frontend dependencies and build
       - name: Install frontend dependencies
         working-directory: ./frontend
         run: |
           yarn install
           yarn run build
 
+      # Step 4: Start backend with PM2 (PM2 already installed globally)
       - name: Start backend with PM2
         working-directory: ./backend
         run: |
