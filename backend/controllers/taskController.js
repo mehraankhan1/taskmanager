@@ -9,7 +9,7 @@ const getTasks = async (req, res) => {
   }
 };
 
-const addTask = async (req, res) => {
+const createTask = async (req, res) => {
   const { title, description, deadline } = req.body;
   try {
     const task = await Task.create({
@@ -51,4 +51,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { getTasks, addTask, updateTask, deleteTask };
+module.exports = { getTasks, createTask, updateTask, deleteTask };

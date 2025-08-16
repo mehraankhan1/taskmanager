@@ -2,17 +2,18 @@ const chai = require("chai");
 const sinon = require("sinon");
 const mongoose = require("mongoose");
 const Task = require("../models/Task");
-const { createTask } = require("../controllers/taskController");
+const { createTask } = require("../controllers/taskController"); // import properly
 
 const { expect } = chai;
 
 describe("Task Controller - createTask", () => {
+  // Cleanup sinon stubs after each test
   afterEach(() => {
-    sinon.restore(); // cleanup stubs after each test
+    sinon.restore();
   });
 
   it("should create a new task successfully", async () => {
-    // Mock request data
+    // Mock request
     const req = {
       user: { id: new mongoose.Types.ObjectId() },
       body: {
@@ -22,14 +23,14 @@ describe("Task Controller - createTask", () => {
       },
     };
 
-    // Mock task that would be created
+    // Mock expected created task
     const createdTask = {
       _id: new mongoose.Types.ObjectId(),
       ...req.body,
       userId: req.user.id,
     };
 
-    // Stub Task.create
+    // Stub Task.create to return the fake task
     const createStub = sinon.stub(Task, "create").resolves(createdTask);
 
     // Mock response
@@ -49,7 +50,7 @@ describe("Task Controller - createTask", () => {
   });
 
   it("should return 500 if an error occurs", async () => {
-    // Stub Task.create to throw error
+    // Force Task.create to throw error
     sinon.stub(Task, "create").throws(new Error("DB Error"));
 
     const req = {
