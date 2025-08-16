@@ -1,7 +1,7 @@
 # Campus Lost and Found System
 
 **Overview:**  
-The Campus Lost and Found System is designed to help students, staff, and visitors efficiently report, track, and claim lost or found items on campus. The application provides a user-friendly interface for submitting lost/found item reports, viewing reported items, updating details, and marking items as claimed. It also includes secure user authentication, allowing users to sign up, log in, and manage their profiles. Built-in validation ensures a seamless user experience while helping the campus community recover lost belongings effectively.
+The Campus Lost and Found System is designed to help students, staff, and visitors efficiently report, track, and claim lost or found items on campus. The application provides a user-friendly interface for submitting lost/found item reports, viewing reported items, updating details, and marking items as claimed. It also includes secure user authentication, allowing users to sign up, log in, and manage their profiles. Built-in validation ensures a seamless user experience while helping the campus community recover lost belongings effectively and easily.
 
 ---
 
