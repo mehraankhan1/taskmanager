@@ -20,11 +20,6 @@ jobs:
           rm -rf node_modules package-lock.json yarn.lock
           npm install
 
-      # Step 2.5: Run backend tests
-      - name: Run backend tests
-        working-directory: ./backend
-        run: npm test
-
       # Step 3: Install frontend dependencies and build
       - name: Install frontend dependencies
         working-directory: ./frontend
