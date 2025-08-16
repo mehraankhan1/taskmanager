@@ -1,3 +1,4 @@
+// server.js
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -5,10 +6,12 @@ const connectDB = require("./config/db");
 const foundItemRoutes = require("./routes/foundItemRoutes");
 const path = require("path");
 
+// Load environment variables from .env
 dotenv.config();
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -21,12 +24,16 @@ app.use("/api/tasks", require("./routes/taskRoutes"));
 app.use("/api/lost", require("./routes/lostItemRoutes"));
 app.use("/api/found", foundItemRoutes);
 
-// Connect to DB and start server if run directly
+// Connect to MongoDB and start server if run directly
 if (require.main === module) {
   connectDB();
   const PORT = process.env.PORT || 5001;
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+  // Listen on all interfaces so EC2 public IP can access it
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 }
 
-// Export the app object for testing
+// Export app for testing
 module.exports = app;
